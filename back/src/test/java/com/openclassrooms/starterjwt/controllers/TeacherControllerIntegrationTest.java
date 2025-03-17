@@ -1,6 +1,7 @@
 package com.openclassrooms.starterjwt.controllers;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -32,6 +33,8 @@ import com.openclassrooms.starterjwt.payload.request.LoginRequest;
 import com.openclassrooms.starterjwt.payload.response.JwtResponse;
 import com.openclassrooms.starterjwt.repository.TeacherRepository;
 import com.openclassrooms.starterjwt.repository.UserRepository;
+
+import io.jsonwebtoken.lang.Arrays;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -171,8 +174,10 @@ public class TeacherControllerIntegrationTest {
         assertEquals(testTeacher1.getId(), dto.getId());
         assertEquals(testTeacher1.getFirstName(), dto.getFirstName());
         assertEquals(testTeacher1.getLastName(), dto.getLastName());
-        
-        List<TeacherDto> dtos = teacherMapper.toDto(List.of(testTeacher1, testTeacher2));
+        List<Teacher> teacherList = new ArrayList<>();
+        teacherList.add(testTeacher1);
+        teacherList.add(testTeacher2);
+        List<TeacherDto> dtos = teacherMapper.toDto(teacherList);
         assertEquals(2, dtos.size());
     }
 }
