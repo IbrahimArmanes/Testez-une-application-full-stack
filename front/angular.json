@@ -112,7 +112,7 @@
             "tsConfig": "tsconfig.spec.json",
             "collectCoverage": true,
             "coverageReporters": ["lcov", "text-summary"],
-            "coverageDirectory": "coverage",
+            "coverageDirectory": "coverageUnit",
             "assets": [
               "src/favicon.ico",
               "src/assets"
