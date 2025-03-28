@@ -110,6 +110,9 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
+            "collectCoverage": true,
+            "coverageReporters": ["lcov", "text-summary"],
+            "coverageDirectory": "coverage",
             "assets": [
               "src/favicon.ico",
               "src/assets"

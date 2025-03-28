@@ -173,7 +173,9 @@ describe('FormComponent', () => {
   it('should validate description max length', () => {
     component.ngOnInit();
     const descriptionControl = component.sessionForm?.get('description');
-    descriptionControl?.setValue('2001');
-    expect(descriptionControl?.errors?.['max']).toBeTruthy();
+    // Create a string that exceeds the 2000 character limit
+    const longText = 'a'.repeat(2001);
+    descriptionControl?.setValue(longText);
+    expect(descriptionControl?.errors?.['maxlength']).toBeTruthy();
   });
 });
